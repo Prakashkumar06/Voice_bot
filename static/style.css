@@ -1,0 +1,170 @@
+/* === Base Page Styling === */
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #141e30, #243b55);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* === Main Chat Container === */
+.chat-container {
+  width: 500px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 1.7rem;
+  margin-bottom: 20px;
+  color: #00f2fe;
+  text-shadow: 0 0 8px rgba(0, 242, 254, 0.4);
+}
+
+/* === Chat Box === */
+.chat-box {
+  height: 350px;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 15px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scroll-behavior: smooth;
+}
+
+.chat-box::-webkit-scrollbar {
+  width: 8px;
+}
+.chat-box::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+/* === Message Bubbles === */
+.bot-msg,
+.user-msg {
+  margin: 5px 0;
+  padding: 10px 15px;
+  border-radius: 16px;
+  max-width: 80%;
+  line-height: 1.4;
+  animation: fadeIn 0.4s ease;
+}
+
+.bot-msg {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  color: #fff;
+  align-self: flex-start;
+  box-shadow: 0 4px 10px rgba(79, 172, 254, 0.3);
+}
+
+.user-msg {
+  background: linear-gradient(135deg, #00f2fe, #4facfe);
+  color: #111;
+  align-self: flex-end;
+  text-align: right;
+  box-shadow: 0 4px 10px rgba(0, 242, 254, 0.3);
+}
+
+/* === Controls Section === */
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* === Record Button === */
+.record-btn {
+  background: linear-gradient(135deg, #00f2fe, #4facfe);
+  border: none;
+  color: #111;
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+}
+
+.record-btn:hover {
+  transform: scale(1.05);
+  color: white;
+  box-shadow: 0 6px 18px rgba(0, 242, 254, 0.5);
+}
+
+.record-btn:active {
+  transform: scale(0.97);
+}
+
+/* === Waveform Animation === */
+.wave {
+  display: none;
+  width: 80%;
+  height: 12px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  animation: wave 1.2s infinite ease-in-out;
+  box-shadow: 0 0 12px rgba(0, 242, 254, 0.4);
+}
+
+.wave.active {
+  display: block;
+}
+
+@keyframes wave {
+  0% {
+    transform: scaleX(0.8);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scaleX(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(0.8);
+    opacity: 0.5;
+  }
+}
+
+/* === Animations === */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Responsive Design === */
+@media (max-width: 600px) {
+  .chat-container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .record-btn {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .chat-box {
+    height: 300px;
+  }
+}
