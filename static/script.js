@@ -30,7 +30,7 @@ recordButton.addEventListener("click", async () => {
 
   if (!isRecording) {
     isRecording = true;
-    recordButton.textContent = "🎙️ Listening...";
+    recordButton.textContent = " Listening...";
     showWave(true);
     audioChunks = [];
 
@@ -75,15 +75,15 @@ async function sendAudioToServer(audioBlob) {
     });
 
     const data = await response.json();
-    console.log("✅ Server response:", data);
+    console.log(" Server response:", data);
 
     if (data.error) {
-      addMessage("❌ " + data.error, "bot");
+      addMessage(" " + data.error, "bot");
       return resetUI();
     }
 
-    addMessage("🗣️ You said: " + data.transcript, "user");
-    addMessage("🤖 " + data.response, "bot");
+    addMessage("You said: " + data.transcript, "user");
+    addMessage(" " + data.response, "bot");
 
     if (data.audio_base64) {
       const audioUrl = "data:audio/wav;base64," + data.audio_base64;
@@ -94,13 +94,13 @@ async function sendAudioToServer(audioBlob) {
 
   } catch (error) {
     console.error("Upload error:", error);
-    addMessage("⚠️ Something went wrong.", "bot");
+    addMessage("Something went wrong.", "bot");
   } finally {
     resetUI();
   }
 }
 
-// 🔄 Reset UI
+
 function resetUI() {
   isRecording = false;
   showWave(false);
