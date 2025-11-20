@@ -2,14 +2,21 @@ import requests
 import json
 import base64
 import os
+from dotenv import load_dotenv
+load_dotenv()
+
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY") 
 WHISPER_URL = "https://api.groq.com/openai/v1/audio/transcriptions"
+
+print("DEBUG:", "GROQ API KEY =", GROQ_API_KEY)
+
 
 def transcribe_with_groq(audio_path):
     headers = {"Authorization": f"Bearer {GROQ_API_KEY}"}
     files = {"file": open(audio_path, "rb")}
     data = {"model": "whisper-large-v3-turbo"}
+    #data = {"model": "whisper-large-v3"}
 
     response = requests.post(WHISPER_URL, headers=headers, files=files, data=data)
 

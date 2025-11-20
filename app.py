@@ -17,12 +17,15 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 if not GROQ_API_KEY:
     raise ValueError("Please set GROQ_API_KEY as an environment variable before running the app.")
 
+print("DEBUG:", "GROQ API KEY =", GROQ_API_KEY)
+
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("voice_bot")
 
 
 prakash_profile = {
-    "life story": "Hi, I am Prakash! I grew up in Bihar and recently finished my B.Tech from NIET. During college, I got really interested in Machine Learning and Generative AI, and since then, I have been exploring projects in that space. I enjoy learning new things and finding creative ways to apply AI to solve real-world problems.",
+    "life story": "Hi, I am Prakash! I grew up in Bihar and recently finished my B.Tech from NIET. During college, I got really interested in Generative AI, and since then, I have been exploring projects in that space. I enjoy learning new things and finding creative ways to apply AI to solve real-world problems.",
     "superpower": "Honestly, I don't believe I have a superpower, but I do strive to be like Iron Man — dedicated, creative, and persistent. I believe hard work, consistency, and honesty toward my goals are what truly make me strong.",
     "areas to grow": "I want to grow in large-scale AI deployment, system design, and leadership skills. I am also learning to stay calm and focused when dealing with high-pressure or unexpected situations.",
     "misconception": "Some coworkers assume I am introverted, but I actually enjoy collaborating and exchanging ideas. I am always open to learning — not just professionally, but personally as well.",
@@ -53,7 +56,7 @@ def process_audio():
         audio_file = request.files["audio_data"]
         with tempfile.NamedTemporaryFile(delete=False, suffix=".webm") as tmp_webm:
             audio_file.save(tmp_webm.name)
-            logger.info(f"🎧 Received audio: {tmp_webm.name}")
+            logger.info(f"Received audio: {tmp_webm.name}")
 
             
             tmp_wav_path = tmp_webm.name.replace(".webm", ".wav")
